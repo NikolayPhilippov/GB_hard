@@ -1,0 +1,3 @@
+﻿  hw_4_hard.cpp
+D:\repo_gb\GB_hard\GB_hard\hw_4_hard\hw_4_hard\hw_4_hard.cpp(42,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  hw_4_hard.vcxproj -> D:\repo_gb\GB_hard\GB_hard\hw_4_hard\x64\Debug\hw_4_hard.exe
