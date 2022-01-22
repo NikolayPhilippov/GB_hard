@@ -5,7 +5,7 @@
 const size_t SIZE = 100;
 
 template <typename T>
-std::vector<T>& insert_sorted(std::vector<T>& v, T val)
+void insert_sorted(std::vector<T>& v, const T val)
 {
     std::sort(v.begin(), v.end());
     
@@ -17,23 +17,22 @@ std::vector<T>& insert_sorted(std::vector<T>& v, T val)
         it = std::lower_bound(v.begin(), v.end(), val);
         v.insert(it, val);
     }
-    return v;
 };
 
-std::vector<double>& setRand(std::vector<double>& v)
+void setRandDoubleVector(std::vector<double>& v)
 {
     for (auto it = v.begin(); it != v.end(); ++it) {
-        *it = ( rand() % 100 ) * 0.1;
+        *it = ( rand() % 1000 ) * 0.1;
     }
-    return v;
 };
 
 
-void no_double(const std::vector<double>& v_double, std::vector<int>& v_int)
+void no_double(std::vector<double>& v_double, std::vector<int>& v_int)
 {
-    for (auto it : v_double) {
+   /* for (auto it : v_double) {
         v_int.push_back( static_cast<int>(it) );
-    }
+    }*/
+    std::transform(v_double.begin(), v_double.end(), v_int.begin(), [](double& it) { return static_cast<int>(it); });
 };
 
 int main()
@@ -43,26 +42,32 @@ int main()
     
     // part1
 
-    std::vector<int> vec{ 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+    std::vector<int> vec_int{ 10, 20, 30, 40, 50, 60, 70, 80, 90 };
     int newValue;
     std::cout << "Введите целое число : ";
     std::cin >> newValue;
-    insert_sorted(vec, newValue);
-    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>{std::cout, " "});
-    std::cout << std::endl;
+    insert_sorted(vec_int, newValue);
+    std::copy(vec_int.begin(), vec_int.end(), std::ostream_iterator<int>{std::cout, " "});
+    std::cout << std::endl << "---------------------" << std::endl;
 
     // part2
-    
  
-    std::vector<double> vector(SIZE);
-    vec.clear();
-    vec.reserve(SIZE);
-    setRand(vector);
-    std::copy(vector.begin(), vector.end(), std::ostream_iterator<double>{std::cout, " "});
-    std::cout << "---------------------" << std::endl;
-    no_double(vector, vec);
-    std::cout << std::endl;
-    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>{std::cout, " "});
-    std::cout << std::endl;
+    std::vector<double> vec_double(SIZE);
+    std::vector<double> delta(SIZE);
+    vec_int.clear();
+    vec_int.resize(SIZE);
+    double temp;
+    setRandDoubleVector(vec_double);
+    std::copy(vec_double.begin(), vec_double.end(), std::ostream_iterator<double>{std::cout, " "});
+    std::cout << std::endl << "---------------------" << std::endl;
+    no_double(vec_double, vec_int);
+    std::copy(vec_int.begin(), vec_int.end(), std::ostream_iterator<int>{std::cout, " "});
+    std::cout << std::endl << "---------------------" << std::endl;
+    
+    //здесь что-то не срабатывает (( 0 0 0 0 0 одни
+
+    std::transform(vec_double.begin(), vec_double.end(), vec_int.begin(), delta.begin(),
+                    [](double& it1, int& it2)->double { return static_cast<double>((it1 - it2) * (it1 - it2)); }); 
+    std::copy(delta.begin(), delta.end(), std::ostream_iterator<int>{std::cout, " "});
 }
 

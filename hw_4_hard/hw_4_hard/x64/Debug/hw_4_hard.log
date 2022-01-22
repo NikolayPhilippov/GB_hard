@@ -1,3 +1,22 @@
 ﻿  hw_4_hard.cpp
-D:\repo_gb\GB_hard\GB_hard\hw_4_hard\hw_4_hard\hw_4_hard.cpp(42,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\repo_gb\GB_hard\GB_hard\hw_4_hard\hw_4_hard\hw_4_hard.cpp(41,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\repo_gb\GB_hard\GB_hard\hw_4_hard\hw_4_hard\hw_4_hard.cpp(59,12): warning C4101: temp: неиспользованная локальная переменная
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xutility(4022,18): warning C4244: аргумент: преобразование "double" в "const _Ty", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.30.30705\include\xutility(4034): message : выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::_Copy_unchecked<double*,_OutIt>(_InIt,_InIt,_OutIt)"
+          with
+          [
+              _OutIt=std::ostream_iterator<int,char,std::char_traits<char>>,
+              _InIt=double *
+          ]
+D:\repo_gb\GB_hard\GB_hard\hw_4_hard\hw_4_hard\hw_4_hard.cpp(68): message : выполняется компиляция ссылки на экземпляр шаблон функции "_OutIt std::copy<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::ostream_iterator<int,char,std::char_traits<char>>>(_InIt,_InIt,_OutIt)"
+          with
+          [
+              _OutIt=std::ostream_iterator<int,char,std::char_traits<char>>,
+              _Ty=double,
+              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<double>>>
+          ]
   hw_4_hard.vcxproj -> D:\repo_gb\GB_hard\GB_hard\hw_4_hard\x64\Debug\hw_4_hard.exe
