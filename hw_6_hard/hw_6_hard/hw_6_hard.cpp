@@ -14,8 +14,6 @@
 #include <utility>
 
 std::mutex mut;
-std::mutex inHomeMut;
-std::mutex outHomeMut;
 
 void pcout_class(const std::string str)
 {
@@ -79,15 +77,38 @@ size_t FindSimpleNumber(size_t val)
     return temp;
 };
 
-void InHouse(std::vector<std::pair<size_t, char>>& in)
+void AddItemFromStore(std::vector<std::pair<size_t, char>>& store)
 {
-    std::lock_guard lg(mut);
-    size_t first = (rand() % 99 + 1); // cost 
-    char second = (rand() % 25 + 41); // A-Z
-    in.push_back({ first, second });
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    while (!store.empty())
+    {
+        srand(time(0));
+        size_t cost_element = (rand() % 99 + 1); // cost
+        char name_element = (rand() % 25 + 65); // A-Z 
+        {
+            std::lock_guard lg(mut);
+            store.push_back({ cost_element, name_element });
+            std::cout << "+++ User +++ Total object = " << store.size() << ". Аdd in house : cost = " <<
+                cost_element << ", short name : " << name_element << std::endl;
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 };
 
+void DeleteItemFromStore(std::vector<std::pair<size_t, char>>& store)
+{
+    while (!store.empty())
+    {
+        auto dell_element = std::max_element(store.begin(), store.end());
+        std::pair<size_t, char> temp = *dell_element;
+        {
+            std::lock_guard lg(mut);
+            std::cout << "!! Thief !! Total object = " << store.size() << ". Delete object : cost = " <<
+                temp.first << ", short name : " << temp.second << std::endl;
+            store.erase(dell_element);
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+}
 
 int main()
 {
@@ -120,6 +141,23 @@ int main()
 
     //part3
 
-    std::vector<std::pair<size_t, char>> thing;
-   
+    std::vector<std::pair<size_t, char>> store_house;
+    store_house.reserve(15);
+    store_house.push_back({ 11,'A'});
+    store_house.push_back({ 23,'B' });
+    store_house.push_back({ 63,'C' });
+    store_house.push_back({ 74,'D' });
+    store_house.push_back({ 25,'E' });
+    store_house.push_back({ 46,'F' });
+    store_house.push_back({ 77,'A' });
+    store_house.push_back({ 45,'B' });
+    store_house.push_back({ 53,'C' });
+    store_house.push_back({ 50,'D' });
+
+    std::thread inHouse(AddItemFromStore, ref(store_house));
+    std::thread outHouse(DeleteItemFromStore, ref(store_house));
+    inHouse.join();
+    outHouse.join();
+
+
 }

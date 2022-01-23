@@ -1,4 +1,5 @@
 ﻿  hw_6_hard.cpp
 D:\repo_gb\GB_hard\GB_hard\hw_6_hard\hw_6_hard\hw_6_hard.cpp(57,20): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
-D:\repo_gb\GB_hard\GB_hard\hw_6_hard\hw_6_hard\hw_6_hard.cpp(92,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\repo_gb\GB_hard\GB_hard\hw_6_hard\hw_6_hard\hw_6_hard.cpp(84,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\repo_gb\GB_hard\GB_hard\hw_6_hard\hw_6_hard\hw_6_hard.cpp(116,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   hw_6_hard.vcxproj -> D:\repo_gb\GB_hard\GB_hard\hw_6_hard\x64\Debug\hw_6_hard.exe
