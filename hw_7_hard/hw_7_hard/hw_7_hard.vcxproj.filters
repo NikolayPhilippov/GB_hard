@@ -18,5 +18,18 @@
     <ClCompile Include="hw_7_hard.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="part2.pb.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="part2.pb.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="protobuf\part2.proto">
+      <Filter>Исходные файлы</Filter>
+    </None>
   </ItemGroup>
 </Project>

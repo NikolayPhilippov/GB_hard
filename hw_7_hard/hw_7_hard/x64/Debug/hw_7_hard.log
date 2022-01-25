@@ -1,0 +1,5 @@
+﻿  hw_7_hard.cpp
+d:\repo_gb\GB_hard\GB_hard\hw_7_hard\hw_7_hard\part2.pb.h(10,10): fatal error C1083: Не удается открыть файл включение: google/protobuf/port_def.inc: No such file or directory,
+  part2.pb.cc
+d:\repo_gb\GB_hard\GB_hard\hw_7_hard\hw_7_hard\part2.pb.h(10,10): fatal error C1083: Не удается открыть файл включение: google/protobuf/port_def.inc: No such file or directory,
+  Создание кода...
